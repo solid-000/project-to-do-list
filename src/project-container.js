@@ -5,12 +5,30 @@ export const projectContainer = (function (){
         array.push(new Project(projectName, description));
     }
 
-    function addTodoToProject(index, name, status, date, time, note){
-        array[index].addT(name, status, date, time, note);
+    function removeProject(index){
+        array.splice(index , 1);
+    }
+
+    function addTodoToProject(index, name, date, time, note){
+        array[index].addT(name, date, time, note);
     }
 
     function removeTodoFromProject(projectIndex, itemIndex){
         array[projectIndex].removeT(itemIndex);
+    }
+
+    function markAsDone(projectIndex, itemIndex){
+        array[projectIndex].todoList[itemIndex].done();
+    }
+
+    function setToLow(projectIndex, itemIndex){
+        array[projectIndex].todoList[itemIndex].setPriority(1);
+    }
+    function setToMedium(projectIndex, itemIndex){
+        array[projectIndex].todoList[itemIndex].setPriority(2);
+    }
+    function setToHigh(projectIndex, itemIndex){
+        array[projectIndex].todoList[itemIndex].setPriority(3);
     }
 
     function viewArray(){
@@ -21,6 +39,11 @@ export const projectContainer = (function (){
         addProjectToContainer,
         addTodoToProject,
         removeTodoFromProject,
+        removeProject,
+        markAsDone,
+        setToLow,
+        setToMedium,
+        setToHigh,
         viewArray
     }
 })();
@@ -44,9 +67,18 @@ class Project{
 class todoItem{
     constructor(name, date, time, note){
         this.todoName = name;
-        this.status = new Boolean(0);
+        this.isDone = false;
+        this.priority = 0;
         this.date = date;
         this.time = time;
         this.note = note;
+    }
+
+    done(){
+        this.isDone = true;
+    }
+
+    setPriority(level){
+        this.priority = level;
     }
 }
