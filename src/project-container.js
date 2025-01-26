@@ -9,8 +9,8 @@ export const projectContainer = (function (){
         array.splice(index , 1);
     }
 
-    function addTodoToProject(index, name, date, time, note){
-        array[index].addT(name, date, time, note);
+    function addTodoToProject(index, name, dateTime, note){
+        array[index].addT(name, dateTime, note);
     }
 
     function removeTodoFromProject(projectIndex, itemIndex){
@@ -55,8 +55,8 @@ class Project{
         this.todoList = [];
     }
 
-    addT(name, date, time, note){
-        this.todoList.push(new todoItem(name, date, time, note));
+    addT(name, dateTime, note){
+        this.todoList.push(new todoItem(name, dateTime, note));
     }
 
     removeT(index){
@@ -65,12 +65,11 @@ class Project{
 }
 
 class todoItem{
-    constructor(name, date, time, note){
+    constructor(name, dateTime, note){
         this.todoName = name;
         this.isDone = false;
         this.priority = 0;
-        this.date = date;
-        this.time = time;
+        this.dateTime = dateTime;
         this.note = note;
     }
 
