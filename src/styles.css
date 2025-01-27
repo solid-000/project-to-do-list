@@ -13,7 +13,8 @@
 :root{
     --primary : #fff8f6;
     --secondary : #FFE8E1;
-    --tertiary : #393636;
+    --tertiary : #514e4e;
+    --color-four : #d9d6d6;
 }
 body{
     display: grid;
@@ -131,14 +132,85 @@ body{
 }
 
 .todo-card{
-    height: 60px;
-    border-bottom: 1px solid var(--tertiary);
+    height: 70px;
+    border-bottom: 1px solid var(--color-four);
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: 5px;
+    gap: 2px;
     margin-left: 10px;
 }
 .todo-card:first-child{
-    border-top: 1px solid var(--tertiary);
+    border-top: 1px solid var(--color-four);
+}
+.top-row, .bottom-row{
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+.bottom-row{
+    padding-left: 44px;
+    font-size: 0.9rem;
+    color: var(--tertiary);
+}
+.top-row button{
+    height: 25px;
+    width: 25px;
+    border-radius: 100%;
+    cursor: pointer;
+    background-color: white;
+}
+.list-done{
+    margin-right: 10px;
+    border: 2px solid var(--tertiary);
+}
+.list-done:hover{
+    border: 3px solid var(--tertiary);
+}
+.list-edit{
+    margin-left: auto;
+    background-image: url(./asset/icons/pencil-outline.svg);
+    border: none;
+}
+.list-edit:active{
+    background-image: url(./asset/icons/pencil.svg);
+}
+.list-title{
+    font-size: 1.3rem;
+    font-weight: 600;
+    line-height: 100%;
+}
+.delete-project:hover, .edit-project:hover, .list-edit:hover{
+    border: 0.5px solid lightgray;
+}
+
+.list-add{
+    border-radius: 10px;
+    height: 60px;
+    display: inline-flex;
+    align-items: center;
+    padding: 0 20px 0 10px;
+    gap: 18px;
+    cursor: pointer;
+    color: var(--tertiary);
+    user-select: none;
+}
+.list-add>span{
+    line-height: 100%;
+}
+.add-svg{
+    height: 30px;
+    width: 30px;
+}
+.list-add:hover{
+    color: black;
+    .add-svg{
+        fill: #ec8a27;
+    }
+}
+.list-add:active{
+    color: var(--tertiary);
+    .add-svg{
+        fill: #f7b16b;
+    }
 }
