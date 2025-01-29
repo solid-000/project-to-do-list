@@ -1,7 +1,8 @@
 "use strict"
 import "./styles.css";
-import { projectContainer } from "./project-container";
-import { populateContent } from "./project-content";
+import { projectContainer } from "./module/project-container-logic";
+import { populateContent, emptyContent } from "./module/project-content";
+import { displayProject } from "./module/project-container-dom";
 
 const projectContainerDom = document.querySelector('.project-container');
 
@@ -11,21 +12,20 @@ projectContainer.addTodoToProject(0, 'todo-2', 22, 'note-2');
 projectContainer.addProjectToContainer('CSS', 'Learn Css');
 projectContainer.addTodoToProject(1, 'yo', 22, 'note-1');
 
-
 console.log(projectContainer.array);
 
 displayProject();
-populateContent(1);
+populateContent(0);
 
 
 
-function displayProject(){
-    projectContainer.array.forEach((element, index)=> {
-        const project = document.createElement('button');
-        project.textContent = element.projectName;
-        project.setAttribute('class', 'project');
-        project.setAttribute('data-project-index', `${index}`);
-        projectContainerDom.appendChild(project);
-    });
-}
+projectContainerDom.addEventListener('click', (event) =>{
+    let target = event.target;
+    if(target.getAttribute('data-project-index')){
+        emptyContent();
+        populateContent(target.getAttribute('data-project-index'));
+    }
+
+});
+
 

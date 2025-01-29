@@ -1,9 +1,8 @@
-import { ca } from "date-fns/locale";
-import { projectContainer } from "./project-container";
+import { projectContainer } from "./project-container-logic";
 
+const content = document.querySelector('.content');
 
-
-export function populateContent(projectIndex){
+function populateContent(projectIndex){
     const projectControls = document.createElement('div');
     projectControls.classList.add('project-controls');
    
@@ -84,5 +83,14 @@ export function populateContent(projectIndex){
     addTodo.append(svg, addTaskSpan);
     addTodo.setAttribute('data-project-index', `${projectIndex}`);
 
-    document.querySelector('.content').append(projectControls, projectInfo, todoList, addTodo);
+    content.append(projectControls, projectInfo, todoList, addTodo);
 }
+
+function emptyContent(){
+    while (content.firstChild){
+        content.firstChild.remove();
+    }
+}
+
+
+export {populateContent, emptyContent};
