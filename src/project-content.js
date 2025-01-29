@@ -70,13 +70,12 @@ export function populateContent(projectIndex){
     const addTodo = document.createElement('div');
     addTodo.classList.add('list-add');
 
-    const svg = document.createElement('svg');
+    const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
     svg.classList.add('add-svg');
-    svg.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
-    svg.setAttribute('viewBox', '0 0 24 24');
-    svg.setAttribute('fill', '#f7b16b');
-    const path = document.createElement('path');
-    path.setAttribute('d', 'M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z');
+    svg.setAttributeNS(null, 'viewBox', '0 0 24 24');
+    svg.setAttributeNS(null, 'fill', '#f7b16b');
+    const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+    path.setAttributeNS(null, 'd', 'M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z');
     svg.appendChild(path);
 
     const addTaskSpan = document.createElement('span');
