@@ -2,7 +2,7 @@
 import "./styles.css";
 import { projectContainer } from "./module/project-container-logic";
 import { populateContent, emptyContent } from "./module/project-content";
-import { displayProject } from "./module/project-container-dom";
+import { displayProject, addProject} from "./module/project-container-dom";
 
 const projectContainerDom = document.querySelector('.project-container');
 
@@ -17,7 +17,7 @@ console.log(projectContainer.array);
 displayProject();
 populateContent(0);
 
-
+console.log(projectContainer.array);
 
 projectContainerDom.addEventListener('click', (event) =>{
     let target = event.target;

@@ -10,5 +10,15 @@ function displayProject(){
         projectContainerDom.appendChild(project);
     });
 }
+function addProject(name, description){
+    projectContainer.addProjectToContainer(name, description);
+    emptyProject();
+    displayProject();
+}
+function emptyProject(){
+    while(projectContainerDom.firstChild){
+        projectContainerDom.firstChild.remove();
+    }
+}
 
-export {displayProject};
+export {displayProject, addProject};
