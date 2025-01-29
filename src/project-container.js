@@ -31,9 +31,6 @@ export const projectContainer = (function (){
         array[projectIndex].todoList[itemIndex].setPriority(3);
     }
 
-    function viewArray(){
-        console.log(array);
-    }
 
     return {
         addProjectToContainer,
@@ -44,7 +41,7 @@ export const projectContainer = (function (){
         setToLow,
         setToMedium,
         setToHigh,
-        viewArray
+        array
     }
 })();
 
