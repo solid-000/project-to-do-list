@@ -14,13 +14,27 @@
             <div class="project-container-title">
                 <div>Projects</div>
                 <button class="add-project"></button>
+                <dialog class="modal-add-project" >
+                    <form action="post">
+                        <button type="button" class="close-modal" id="close-project-modal"></button>
+                        
+                        <div>
+                            <label for="project-name">Project Name:</label><br>
+                            <input type="text" id="project-name">
+                        </div>
+                        <div>
+                            <label for="project-desc">Project Description:</label><br>
+                            <textarea name="project-desc" id="project-desc"></textarea>
+                        </div>
+                        <button type="button" class="modal-btn-add-project">Add project</button>
+
+                    </form>
+                </dialog>
             </div>
             <div class="project-container"></div>
         </div>
     </div>
 
-    <div class="content">
-
-    </div>
+    <div class="content"></div>
 </body>
 </html>

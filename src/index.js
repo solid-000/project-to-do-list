@@ -1,5 +1,6 @@
 "use strict"
 import "./styles.css";
+import "./modal.css";
 import { projectContainer } from "./module/project-container-logic";
 import { populateContent, emptyContent } from "./module/project-content";
 import { displayProject, addProject} from "./module/project-container-dom";
@@ -28,4 +29,19 @@ projectContainerDom.addEventListener('click', (event) =>{
 
 });
 
-
+document.querySelector('.add-project').addEventListener('click', () => {
+    document.querySelector('.modal-add-project').showModal();
+});
+document.querySelector('#close-project-modal').addEventListener('click', () => {
+    document.querySelector('.modal-add-project').close();
+    document.querySelector('#project-name').value = '';
+    document.querySelector('#project-desc').value = '';
+});
+document.querySelector('.modal-btn-add-project').addEventListener('click', () => {
+    const name = document.querySelector('#project-name');
+    const desc = document.querySelector('#project-desc');
+    addProject(name.value || 'Unnamed', desc.value || 'Description not added.');
+    document.querySelector('.modal-add-project').close();
+    name.value = '';
+    desc.value = '';
+});

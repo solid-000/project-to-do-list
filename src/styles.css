@@ -143,6 +143,9 @@ body{
 .todo-card:first-child{
     border-top: 1px solid var(--color-four);
 }
+.todo-card:last-child{
+    border: none;
+}
 .top-row, .bottom-row{
     display: flex;
     gap: 8px;
@@ -194,6 +197,7 @@ body{
     cursor: pointer;
     color: var(--tertiary);
     user-select: none;
+    border-top: 1px solid var(--color-four);
 }
 .list-add>span{
     line-height: 100%;
