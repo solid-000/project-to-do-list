@@ -3,7 +3,7 @@ import "./styles.css";
 import "./modal.css";
 import { projectContainer } from "./module/project-container-logic";
 import { populateContent, emptyContent } from "./module/project-content";
-import { displayProject, addProject} from "./module/project-container-dom";
+import { displayProject, addProject, addTodo} from "./module/project-container-dom";
 
 const projectContainerDom = document.querySelector('.project-container');
 
@@ -13,12 +13,10 @@ projectContainer.addTodoToProject(0, 'todo-2', 22, 'note-2');
 projectContainer.addProjectToContainer('CSS', 'Learn Css');
 projectContainer.addTodoToProject(1, 'yo', 22, 'note-1');
 
-console.log(projectContainer.array);
-
 displayProject();
 populateContent(0);
 
-console.log(projectContainer.array);
+console.table(projectContainer.array)
 
 projectContainerDom.addEventListener('click', (event) =>{
     let target = event.target;
@@ -26,7 +24,6 @@ projectContainerDom.addEventListener('click', (event) =>{
         emptyContent();
         populateContent(target.getAttribute('data-project-index'));
     }
-
 });
 
 document.querySelector('.add-project').addEventListener('click', () => {
@@ -37,6 +34,9 @@ document.querySelector('#close-project-modal').addEventListener('click', () => {
     document.querySelector('#project-name').value = '';
     document.querySelector('#project-desc').value = '';
 });
+document.querySelector('#close-todo-modal').addEventListener('click', () => {
+    document.querySelector('.modal-add-todo').close();
+});
 document.querySelector('.modal-btn-add-project').addEventListener('click', () => {
     const name = document.querySelector('#project-name');
     const desc = document.querySelector('#project-desc');
@@ -44,4 +44,14 @@ document.querySelector('.modal-btn-add-project').addEventListener('click', () =>
     document.querySelector('.modal-add-project').close();
     name.value = '';
     desc.value = '';
+});
+
+document.querySelector('.modal-btn-add-todo').addEventListener('click', () => {
+    let index = document.querySelector('.list-add').getAttribute('data-project-index');
+    let name = document.querySelector('#todo-name').value;
+    let date = document.querySelector('#todo-date').value;
+    let note = document.querySelector('#todo-note').value;
+    let rush = document.querySelector('input[name="priority"]:checked').value;
+    addTodo(index, name, date, note, rush);
+    document.querySelector('.modal-add-todo').close();
 });

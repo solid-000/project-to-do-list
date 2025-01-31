@@ -20,13 +20,13 @@
                         
                         <div>
                             <label for="project-name">Project Name:</label><br>
-                            <input type="text" id="project-name">
+                            <input type="text" id="project-name" maxlength="20">
                         </div>
                         <div>
                             <label for="project-desc">Project Description:</label><br>
                             <textarea name="project-desc" id="project-desc"></textarea>
                         </div>
-                        <button type="button" class="modal-btn-add-project">Add project</button>
+                        <button type="button" class="modal-btn-add-project modal-btn-add">Add project</button>
 
                     </form>
                 </dialog>
@@ -36,5 +36,33 @@
     </div>
 
     <div class="content"></div>
+
+    <dialog class="modal-add-todo">
+        <form action="post">
+            <button type="button" class="close-modal" id="close-todo-modal"></button>
+            <div>
+                <label for="todo-name">Name:</label>
+                <input type="text" id="todo-name">
+            </div>
+            <div>
+                <label for="todo-date">Due Date:</label>
+                <input type="date" id="todo-date">
+            </div>
+            <div>
+                <label for="todo-note">Note:</label>
+                <input type="text" id="todo-note">
+            </div>
+            <fieldset>
+                <legend>Priority:</legend>
+                <input type="radio" name="priority" id="low" value="1" checked>
+                <label for="low">Low</label>
+                <input type="radio" name="priority" id="medium" value="2">
+                <label for="medium">Medium</label>
+                <input type="radio" name="priority" id="high" value="3">
+                <label for="high">High</label>
+            </fieldset>
+            <button type="button" class="modal-btn-add modal-btn-add-todo">Add task</button>
+        </form>
+    </dialog>
 </body>
 </html>

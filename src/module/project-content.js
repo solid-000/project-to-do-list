@@ -84,6 +84,13 @@ function populateContent(projectIndex){
     addTodo.setAttribute('data-project-index', `${projectIndex}`);
 
     content.append(projectControls, projectInfo, todoList, addTodo);
+
+
+
+
+    addTodo.addEventListener('click', () => {
+        document.querySelector('.modal-add-todo').showModal();
+    });
 }
 
 function emptyContent(){

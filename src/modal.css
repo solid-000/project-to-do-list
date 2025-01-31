@@ -22,11 +22,6 @@
     background-image: url(./asset/icons/close.svg);
     cursor: pointer;
 }
-.modal-btn-add-project{
-    margin-top: auto;
-    padding: 5px;
-    cursor: pointer;
-}
 .modal-add-project>form div{
     width: 100%;
 }
@@ -46,4 +41,15 @@
 }
 .modal-add-project>form label{
     font-weight: 700;
+}
+
+.modal-add-todo{
+    height: 300px;
+    width: 700px;
+    margin: 200px auto auto auto;
+}
+.modal-btn-add{
+    margin-top: auto;
+    padding: 5px;
+    cursor: pointer;
 }

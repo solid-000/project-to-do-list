@@ -1,4 +1,5 @@
 import { projectContainer } from "./project-container-logic";
+import { emptyContent, populateContent } from "./project-content";
 const projectContainerDom = document.querySelector('.project-container');
 
 function displayProject(){
@@ -20,5 +21,10 @@ function emptyProject(){
         projectContainerDom.firstChild.remove();
     }
 }
+function addTodo(index, name, date, note, rush){
+    projectContainer.addTodoToProject(index, name, date, note, rush);
+    emptyContent();
+    populateContent(index);
+}
 
-export {displayProject, addProject};
+export {displayProject, addProject, addTodo};
