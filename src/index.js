@@ -46,12 +46,15 @@ document.querySelector('.modal-btn-add-project').addEventListener('click', () =>
     desc.value = '';
 });
 
-document.querySelector('.modal-btn-add-todo').addEventListener('click', () => {
+document.querySelector('#modal-btn-add-todo').addEventListener('click', () => {
     let index = document.querySelector('.list-add').getAttribute('data-project-index');
-    let name = document.querySelector('#todo-name').value;
-    let date = document.querySelector('#todo-date').value;
-    let note = document.querySelector('#todo-note').value;
+    let name = document.querySelector('#todo-name');
+    let date = document.querySelector('#todo-date');
+    let note = document.querySelector('#todo-note');
     let rush = document.querySelector('input[name="priority"]:checked').value;
-    addTodo(index, name, date, note, rush);
+    addTodo(index, name.value, date.value, note.value, rush);
     document.querySelector('.modal-add-todo').close();
+    name.value = '';
+    date.value = '';
+    note.value = '';
 });
