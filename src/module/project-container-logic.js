@@ -20,6 +20,10 @@ export const projectContainer = (function (){
     function markAsDone(projectIndex, itemIndex){
         array[projectIndex].todoList[itemIndex].done();
     }
+    function editProject(index, name, desc){
+        array[index].projectName = name;
+        array[index].description = desc;
+    }
 
 
 
@@ -30,6 +34,7 @@ export const projectContainer = (function (){
         removeTodoFromProject,
         removeProject,
         markAsDone,
+        editProject,
         array
     }
 })();

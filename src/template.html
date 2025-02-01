@@ -64,5 +64,23 @@
             <button type="button" class="modal-btn-add" id="modal-btn-add-todo">Add task</button>
         </form>
     </dialog>
+
+    <dialog id="modal-edit-project">
+        <form action="post">
+            <button type="button" class="close-modal" id="close-project-edit-modal"></button>
+            
+            <div>
+                <label for="edit-project-name">Project Name:</label><br>
+                <input type="text" id="edit-project-name" maxlength="20">
+            </div>
+            <div>
+                <label for="edit-project-desc">Project Description:</label><br>
+                <textarea id="edit-project-desc"></textarea>
+            </div>
+            <button type="button" class="modal-btn-edit-project modal-btn-add">Edit project</button>
+
+        </form>
+
+    </dialog>
 </body>
 </html>

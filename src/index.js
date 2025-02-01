@@ -36,6 +36,9 @@ document.querySelector('#close-project-modal').addEventListener('click', () => {
 });
 document.querySelector('#close-todo-modal').addEventListener('click', () => {
     document.querySelector('.modal-add-todo').close();
+    document.querySelector('#todo-name').value = '';
+    document.querySelector('#todo-date').value = '';
+    document.querySelector('#todo-note').value = '';
 });
 document.querySelector('.modal-btn-add-project').addEventListener('click', () => {
     const name = document.querySelector('#project-name');
@@ -58,3 +61,18 @@ document.querySelector('#modal-btn-add-todo').addEventListener('click', () => {
     date.value = '';
     note.value = '';
 });
+
+document.querySelector('#close-project-edit-modal').addEventListener('click', () => {
+    document.querySelector('#modal-edit-project').close();
+});
+document.querySelector('.modal-btn-edit-project').addEventListener('click', () => {
+    let index = document.querySelector('.content').getAttribute('data-project-index')
+    projectContainer.editProject(
+        index,
+        document.querySelector('#edit-project-name').value,
+        document.querySelector('#edit-project-desc').value
+    );
+    emptyContent();
+    populateContent(index);
+    document.querySelector('#modal-edit-project').close();
+})

@@ -84,12 +84,19 @@ function populateContent(projectIndex){
     addTodo.setAttribute('data-project-index', `${projectIndex}`);
 
     content.append(projectControls, projectInfo, todoList, addTodo);
+    content.setAttribute('data-project-index', projectIndex);
 
 
 
 
     addTodo.addEventListener('click', () => {
         document.querySelector('.modal-add-todo').showModal();
+    });
+
+    editProject.addEventListener('click', () => {
+        document.querySelector('#modal-edit-project').showModal();
+        document.querySelector('#edit-project-name').value = projectContainer.array[projectIndex].projectName;
+        document.querySelector('#edit-project-desc').value = projectContainer.array[projectIndex].description;
     });
 }
 
