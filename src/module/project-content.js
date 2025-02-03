@@ -39,15 +39,23 @@ function populateContent(projectIndex){
         topRow.classList.add('top-row');
         const listDone = document.createElement('button');
         const listTitle = document.createElement('span');
-        const listEdit = document.createElement('button');
         listDone.classList.add('list-done');
         listTitle.classList.add('list-title');
-        listEdit.classList.add('list-edit');
         listTitle.textContent = element.todoName;
         listDone.setAttribute('data-todo-index', `${index}`);
-        listEdit.setAttribute('data-todo-index', `${index}`);
+        switch(element.priority){
+            case '1':
+                listDone.classList.add('low');
+                break;
+            case '2':
+                listDone.classList.add('medium');
+                break;
+            case '3':
+                listDone.classList.add('high');
+                break;
+        }
 
-        topRow.append(listDone, listTitle, listEdit);
+        topRow.append(listDone, listTitle);
 
 
         const bottomRow = document.createElement('div');
@@ -64,6 +72,12 @@ function populateContent(projectIndex){
 
         card.append(topRow, bottomRow);
         todoList.appendChild(card);
+
+        listDone.addEventListener('click', () => {
+            projectContainer.removeTodoFromProject(projectIndex, index);
+            emptyContent();
+            populateContent(projectIndex);
+        });
     });
 
     const addTodo = document.createElement('div');

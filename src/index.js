@@ -8,15 +8,15 @@ import { displayProject, addProject, addTodo} from "./module/project-container-d
 const projectContainerDom = document.querySelector('.project-container');
 
 projectContainer.addProjectToContainer('Default', 'All unlisted tasks are added to this project.')
-projectContainer.addTodoToProject(0, 'todo-1', 22, 'note-1');
-projectContainer.addTodoToProject(0, 'todo-2', 22, 'note-2');
+projectContainer.addTodoToProject(0, 'todo-1', 22, 'note-1', '1');
+projectContainer.addTodoToProject(0, 'todo-2', 22, 'note-2', '2');
+projectContainer.addTodoToProject(0, 'todo-3', 22, 'note-3', '3');
+
 projectContainer.addProjectToContainer('CSS', 'Learn Css');
-projectContainer.addTodoToProject(1, 'yo', 22, 'note-1');
+projectContainer.addTodoToProject(1, 'yo', 22, 'note-1', '3');
 
 displayProject();
 populateContent(0);
-
-console.table(projectContainer.array)
 
 projectContainerDom.addEventListener('click', (event) =>{
     let target = event.target;
@@ -54,12 +54,10 @@ document.querySelector('#modal-btn-add-todo').addEventListener('click', () => {
     let name = document.querySelector('#todo-name');
     let date = document.querySelector('#todo-date');
     let note = document.querySelector('#todo-note');
-    let rush = document.querySelector('input[name="priority"]:checked').value;
-    addTodo(index, name.value, date.value, note.value, rush);
+    let rush = document.querySelector('input[name="priority"]:checked');
+    addTodo(index, name.value, date.value, note.value, rush.value);
     document.querySelector('.modal-add-todo').close();
-    name.value = '';
-    date.value = '';
-    note.value = '';
+    document.querySelector('.modal-add-todo>form').reset();
 });
 
 document.querySelector('#close-project-edit-modal').addEventListener('click', () => {

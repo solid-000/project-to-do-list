@@ -15,6 +15,9 @@
     --secondary : #FFE8E1;
     --tertiary : #514e4e;
     --color-four : #d9d6d6;
+    --low : #a5bb62;
+    --medium : #e3da2e;
+    --high : #c46a59;
 }
 body{
     display: grid;
@@ -169,28 +172,16 @@ body{
     margin-right: 10px;
     border: 2px solid var(--tertiary);
 }
-.list-done:hover{
-    border: 3px solid var(--tertiary);
-}
-.list-edit{
-    margin-left: auto;
-    background-image: url(./asset/icons/pencil-outline.svg);
-    border: none;
-}
-.list-edit:active{
-    background-image: url(./asset/icons/pencil.svg);
-}
 .list-title{
     font-size: 1.3rem;
     font-weight: 600;
     line-height: 100%;
 }
-.delete-project:hover, .edit-project:hover, .list-edit:hover{
+.delete-project:hover, .edit-project:hover{
     border: 0.5px solid lightgray;
 }
 
 .list-add{
-    border-radius: 10px;
     height: 60px;
     display: inline-flex;
     align-items: center;
@@ -219,4 +210,31 @@ body{
     .add-svg{
         fill: #f7b16b;
     }
+}
+.low{
+    border: 2px solid var(--low);
+}
+.medium{
+    border: 2px solid var(--medium);
+}
+.high{
+    border: 2px solid var(--high);
+}
+.low:hover{
+    border: 4px solid var(--low);
+}
+.medium:hover{
+    border: 4px solid var(--medium);
+}
+.high:hover{
+    border: 4px solid var(--high);
+}
+.low:active{
+    background-color: var(--low);
+}
+.medium:active{
+    background-color: var(--medium);
+}
+.high:active{
+    background-color: var(--high);
 }
