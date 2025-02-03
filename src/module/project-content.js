@@ -15,6 +15,16 @@ function populateContent(projectIndex){
 
     projectControls.append(editProject, deleteProject);
 
+    deleteProject.addEventListener('click', () => {
+        document.querySelector('#confirm-delete').setAttribute('data-project-index', projectIndex);
+        if(projectIndex == 0){
+            alert ('Cannot delete this project!')
+        }else{
+            document.querySelector('#confirm-delete').showModal();
+        }
+    });
+
+
 
     const projectInfo = document.createElement('div');
     projectInfo.classList.add('project-info');

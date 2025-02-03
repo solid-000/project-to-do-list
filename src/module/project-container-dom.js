@@ -27,4 +27,4 @@ function addTodo(index, name, date, note, rush){
     populateContent(index);
 }
 
-export {displayProject, addProject, addTodo};
+export {displayProject, emptyProject, addProject, addTodo};

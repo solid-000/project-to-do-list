@@ -3,7 +3,7 @@ import "./styles.css";
 import "./modal.css";
 import { projectContainer } from "./module/project-container-logic";
 import { populateContent, emptyContent } from "./module/project-content";
-import { displayProject, addProject, addTodo} from "./module/project-container-dom";
+import { displayProject, emptyProject, addProject, addTodo} from "./module/project-container-dom";
 
 const projectContainerDom = document.querySelector('.project-container');
 
@@ -55,6 +55,10 @@ document.querySelector('#modal-btn-add-todo').addEventListener('click', () => {
     let date = document.querySelector('#todo-date');
     let note = document.querySelector('#todo-note');
     let rush = document.querySelector('input[name="priority"]:checked');
+    if(name.value == ''){
+        alert('Name cannot be empty!');
+        return;
+    }
     addTodo(index, name.value, date.value, note.value, rush.value);
     document.querySelector('.modal-add-todo').close();
     document.querySelector('.modal-add-todo>form').reset();
@@ -73,4 +77,22 @@ document.querySelector('.modal-btn-edit-project').addEventListener('click', () =
     emptyContent();
     populateContent(index);
     document.querySelector('#modal-edit-project').close();
-})
+});
+
+let modalConfirm = document.querySelector('#confirm-delete');
+document.querySelector('#yes').addEventListener('click', () => {
+    let projectIndex = modalConfirm.getAttribute('data-project-index');
+    if(projectIndex != 0){
+        projectContainer.removeProject(projectIndex);
+        emptyContent();
+        emptyProject();
+        displayProject();
+        populateContent(0);
+    }else if(projectIndex == 0){
+        alert('Cannot delete this project!!');
+    }
+    modalConfirm.close();
+});
+document.querySelector('#no').addEventListener('click', () => {
+    modalConfirm.close();
+});

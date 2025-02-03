@@ -108,3 +108,15 @@
 #high{
     accent-color: #c46a59;
 }
+
+#confirm-delete{
+    padding: 10px;
+    margin-left: auto;
+    border-radius: 15px;
+}
+#confirm-delete h3{
+    margin-bottom: 10px;
+}
+#confirm-delete button{
+    padding: 2px 5px;
+}

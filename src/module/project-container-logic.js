@@ -58,13 +58,8 @@ class Project{
 class todoItem{
     constructor(name, dateTime, note , priority){
         this.todoName = name;
-        this.isDone = false;
         this.priority = priority;
         this.dateTime = dateTime;
         this.note = note;
-    }
-
-    done(){
-        this.isDone = true;
     }
 }
