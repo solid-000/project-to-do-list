@@ -1,28 +1,32 @@
+import { storeToLocal } from "..";
+
 export const projectContainer = (function (){
     let array = [];
 
     function addProjectToContainer(projectName, description){
         array.push(new Project(projectName, description));
+        storeToLocal();
     }
 
     function removeProject(index){
         array.splice(index , 1);
+        storeToLocal();
     }
 
     function addTodoToProject(index, name, dateTime, note, priority){
         array[index].addT(name, dateTime, note ,priority);
+        storeToLocal();
     }
 
     function removeTodoFromProject(projectIndex, itemIndex){
         array[projectIndex].removeT(itemIndex);
+        storeToLocal();
     }
 
-    function markAsDone(projectIndex, itemIndex){
-        array[projectIndex].todoList[itemIndex].done();
-    }
     function editProject(index, name, desc){
         array[index].projectName = name;
         array[index].description = desc;
+        storeToLocal();
     }
 
 
@@ -33,7 +37,6 @@ export const projectContainer = (function (){
         addTodoToProject,
         removeTodoFromProject,
         removeProject,
-        markAsDone,
         editProject,
         array
     }

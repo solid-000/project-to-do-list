@@ -4,19 +4,15 @@ import "./modal.css";
 import { projectContainer } from "./module/project-container-logic";
 import { populateContent, emptyContent } from "./module/project-content";
 import { displayProject, emptyProject, addProject, addTodo} from "./module/project-container-dom";
+export {storeToLocal};
 
 const projectContainerDom = document.querySelector('.project-container');
 
-projectContainer.addProjectToContainer('Default', 'All unlisted tasks are added to this project.')
-projectContainer.addTodoToProject(0, 'todo-1', 22, 'note-1', '1');
-projectContainer.addTodoToProject(0, 'todo-2', 22, 'note-2', '2');
-projectContainer.addTodoToProject(0, 'todo-3', 22, 'note-3', '3');
-
-projectContainer.addProjectToContainer('CSS', 'Learn Css');
-projectContainer.addTodoToProject(1, 'yo', 22, 'note-1', '3');
-
+getFromLocal();
 displayProject();
-populateContent(0);
+if(projectContainer.array[0]){
+    populateContent(0);
+}
 
 projectContainerDom.addEventListener('click', (event) =>{
     let target = event.target;
@@ -47,6 +43,8 @@ document.querySelector('.modal-btn-add-project').addEventListener('click', () =>
     document.querySelector('.modal-add-project').close();
     name.value = '';
     desc.value = '';
+    emptyContent();
+    populateContent(projectContainer.array.length-1);
 });
 
 document.querySelector('#modal-btn-add-todo').addEventListener('click', () => {
@@ -76,23 +74,39 @@ document.querySelector('.modal-btn-edit-project').addEventListener('click', () =
     );
     emptyContent();
     populateContent(index);
+    emptyProject();
+    displayProject();
     document.querySelector('#modal-edit-project').close();
 });
 
 let modalConfirm = document.querySelector('#confirm-delete');
 document.querySelector('#yes').addEventListener('click', () => {
     let projectIndex = modalConfirm.getAttribute('data-project-index');
-    if(projectIndex != 0){
-        projectContainer.removeProject(projectIndex);
-        emptyContent();
-        emptyProject();
-        displayProject();
-        populateContent(0);
-    }else if(projectIndex == 0){
-        alert('Cannot delete this project!!');
+    projectContainer.removeProject(projectIndex);
+    emptyContent();
+    emptyProject();
+    displayProject();
+    if(projectContainer.array[projectIndex-1]){
+        populateContent(projectIndex-1);
     }
     modalConfirm.close();
+    
 });
 document.querySelector('#no').addEventListener('click', () => {
     modalConfirm.close();
 });
+
+function storeToLocal(){
+    localStorage.setItem('info', JSON.stringify(projectContainer.array));
+}
+function getFromLocal(){
+    let array = JSON.parse(localStorage.getItem('info'));
+    if(array){
+        array.forEach((project, projectIndex) => {
+            projectContainer.addProjectToContainer(project.projectName, project.description);
+            project.todoList.forEach((item, index) => {
+                projectContainer.addTodoToProject(projectIndex, item.todoName, item.dateTime, item.note, item.priority);
+            });
+        });
+    }
+}
