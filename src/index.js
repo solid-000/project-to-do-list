@@ -21,7 +21,6 @@ projectContainerDom.addEventListener('click', (event) =>{
         populateContent(target.getAttribute('data-project-index'));
     }
 });
-
 document.querySelector('.add-project').addEventListener('click', () => {
     document.querySelector('.modal-add-project').showModal();
 });
@@ -86,8 +85,15 @@ document.querySelector('#yes').addEventListener('click', () => {
     emptyContent();
     emptyProject();
     displayProject();
-    if(projectContainer.array[projectIndex-1]){
-        populateContent(projectIndex-1);
+    if(projectIndex == 0){
+        console.log('asd')
+        if(projectContainer.array[0]){
+            populateContent(0);
+        }
+    }else{
+        if(projectContainer.array[projectIndex-1]){
+            populateContent(projectIndex-1);
+        }
     }
     modalConfirm.close();
     
