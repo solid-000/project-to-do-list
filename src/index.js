@@ -3,20 +3,20 @@ import "./styles.css";
 import "./modal.css";
 import { projectContainer } from "./module/project-container-logic";
 import { populateContent, emptyContent } from "./module/project-content";
-import { displayProject, emptyProject, addProject, addTodo} from "./module/project-container-dom";
-export {storeToLocal};
+import { displayProject, emptyProject, addProject, addTodo } from "./module/project-container-dom";
+export { storeToLocal };
 
 const projectContainerDom = document.querySelector('.project-container');
 
 getFromLocal();
 displayProject();
-if(projectContainer.array[0]){
+if (projectContainer.array[0]) {
     populateContent(0);
 }
 
-projectContainerDom.addEventListener('click', (event) =>{
+projectContainerDom.addEventListener('click', (event) => {
     let target = event.target;
-    if(target.getAttribute('data-project-index')){
+    if (target.getAttribute('data-project-index')) {
         emptyContent();
         populateContent(target.getAttribute('data-project-index'));
     }
@@ -43,7 +43,7 @@ document.querySelector('.modal-btn-add-project').addEventListener('click', () =>
     name.value = '';
     desc.value = '';
     emptyContent();
-    populateContent(projectContainer.array.length-1);
+    populateContent(projectContainer.array.length - 1);
 });
 
 document.querySelector('#modal-btn-add-todo').addEventListener('click', () => {
@@ -52,7 +52,7 @@ document.querySelector('#modal-btn-add-todo').addEventListener('click', () => {
     let date = document.querySelector('#todo-date');
     let note = document.querySelector('#todo-note');
     let rush = document.querySelector('input[name="priority"]:checked');
-    if(name.value == ''){
+    if (name.value == '') {
         alert('Name cannot be empty!');
         return;
     }
@@ -85,32 +85,32 @@ document.querySelector('#yes').addEventListener('click', () => {
     emptyContent();
     emptyProject();
     displayProject();
-    if(projectIndex == 0){
+    if (projectIndex == 0) {
         console.log('asd')
-        if(projectContainer.array[0]){
+        if (projectContainer.array[0]) {
             populateContent(0);
         }
-    }else{
-        if(projectContainer.array[projectIndex-1]){
-            populateContent(projectIndex-1);
+    } else {
+        if (projectContainer.array[projectIndex - 1]) {
+            populateContent(projectIndex - 1);
         }
     }
     modalConfirm.close();
-    
+
 });
 document.querySelector('#no').addEventListener('click', () => {
     modalConfirm.close();
 });
 
-function storeToLocal(){
+function storeToLocal() {
     localStorage.setItem('info', JSON.stringify(projectContainer.array));
 }
-function getFromLocal(){
+function getFromLocal() {
     let array = JSON.parse(localStorage.getItem('info'));
-    if(array){
+    if (array) {
         array.forEach((project, projectIndex) => {
             projectContainer.addProjectToContainer(project.projectName, project.description);
-            project.todoList.forEach((item, index) => {
+            project.todoList.forEach((item) => {
                 projectContainer.addTodoToProject(projectIndex, item.todoName, item.dateTime, item.note, item.priority);
             });
         });

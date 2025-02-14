@@ -1,10 +1,13 @@
-.modal-add-project, #modal-edit-project{
+.modal-add-project,
+#modal-edit-project {
     height: 500px;
     width: 300px;
     border-radius: 20px;
     margin: 100px auto auto auto;
 }
-.modal-add-project>form, #modal-edit-project>form{
+
+.modal-add-project>form,
+#modal-edit-project>form {
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -13,7 +16,8 @@
     padding: 20px;
     gap: 15px;
 }
-.close-modal{
+
+.close-modal {
     margin-bottom: 30px;
     margin-left: auto;
     height: 25px;
@@ -22,101 +26,127 @@
     background-image: url(./asset/icons/close.svg);
     cursor: pointer;
 }
-.modal-add-project>form div, #modal-edit-project>form div{
+
+.modal-add-project>form div,
+#modal-edit-project>form div {
     width: 100%;
 }
-#project-name, #edit-project-name{
+
+#project-name,
+#edit-project-name {
     width: 100%;
     height: 25px;
 }
-#project-desc, #edit-project-desc{
+
+#project-desc,
+#edit-project-desc {
     width: 100%;
     height: 200px;
     resize: none;
 }
-#project-name, #project-desc, #edit-project-name, #edit-project-desc{
+
+#project-name,
+#project-desc,
+#edit-project-name,
+#edit-project-desc {
     padding: 5px;
     border-radius: 5px;
     border: 1px solid #514e4e;
 }
-.modal-add-project>form label, #modal-edit-project>form label{
+
+.modal-add-project>form label,
+#modal-edit-project>form label {
     font-weight: 700;
 }
 
 
 
 
-.modal-add-todo{
+.modal-add-todo {
     height: 320px;
     width: 700px;
     padding: 20px 15px;
     margin: 200px auto auto auto;
     border-radius: 20px;
 }
-.modal-add-todo>form{
+
+.modal-add-todo>form {
     height: 100%;
     width: 100%;
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
 }
-.modal-btn-add{
+
+.modal-btn-add {
     margin-top: auto;
     padding: 5px;
     cursor: pointer;
 }
 
-#close-todo-modal{
+#close-todo-modal {
     display: block;
     margin-bottom: 0;
 }
-.modal-add-todo>form>div:first-child{
+
+.modal-add-todo>form>div:first-child {
     flex-basis: 100%;
     height: 0px;
     margin-bottom: 20px;
 }
-.modal-add-todo>form>div:nth-child(4){
+
+.modal-add-todo>form>div:nth-child(4) {
     flex-basis: 100%;
 }
-.modal-add-todo>form>fieldset{
+
+.modal-add-todo>form>fieldset {
     flex-basis: 100%;
     padding: 5px;
 }
-.modal-add-todo input[type = 'text']{
-    padding: 5px ;
+
+.modal-add-todo input[type='text'] {
+    padding: 5px;
     font-size: 1rem;
 }
-#todo-note{
+
+#todo-note {
     width: 100%;
 }
-#todo-name{
+
+#todo-name {
     width: 300px;
 }
-.modal-add-todo>form>div:nth-child(2){
+
+.modal-add-todo>form>div:nth-child(2) {
     margin-right: auto;
 }
-#modal-btn-add-todo{
+
+#modal-btn-add-todo {
     margin-top: 10px;
 }
 
-#low{
+#low {
     accent-color: green;
 }
-#medium{
+
+#medium {
     accent-color: yellow;
 }
-#high{
+
+#high {
     accent-color: #c46a59;
 }
 
-#confirm-delete{
+#confirm-delete {
     padding: 10px;
     margin-left: auto;
     border-radius: 15px;
 }
-#confirm-delete h3{
+
+#confirm-delete h3 {
     margin-bottom: 10px;
 }
-#confirm-delete button{
+
+#confirm-delete button {
     padding: 2px 5px;
 }

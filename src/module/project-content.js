@@ -2,10 +2,10 @@ import { projectContainer } from "./project-container-logic";
 
 const content = document.querySelector('.content');
 
-function populateContent(projectIndex){
+function populateContent(projectIndex) {
     const projectControls = document.createElement('div');
     projectControls.classList.add('project-controls');
-   
+
     const editProject = document.createElement('button');
     editProject.classList.add('edit-project');
     editProject.setAttribute('data-project-index', `${projectIndex}`);
@@ -44,7 +44,7 @@ function populateContent(projectIndex){
         listTitle.classList.add('list-title');
         listTitle.textContent = element.todoName;
         listDone.setAttribute('data-todo-index', `${index}`);
-        switch(element.priority){
+        switch (element.priority) {
             case '1':
                 listDone.classList.add('low');
                 break;
@@ -118,11 +118,11 @@ function populateContent(projectIndex){
     });
 }
 
-function emptyContent(){
-    while (content.firstChild){
+function emptyContent() {
+    while (content.firstChild) {
         content.firstChild.remove();
     }
 }
 
 
-export {populateContent, emptyContent};
+export { populateContent, emptyContent };
